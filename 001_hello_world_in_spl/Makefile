@@ -53,6 +53,11 @@ app : $(NAMESPACE)/$(APP_NAME).spl
 		--output-dir=build/$(lower_app_name)  \
 		-M sample::$(APP_NAME) \
 		$(SPL_CMD_ARGS)
+	@echo ""
+	@echo "Generating :  $(lower_app_name).yaml"
+	@echo "To submit application : kubectl -apply -f $(lower_app_name).yaml"
+	@echo ""
+
 	@echo "apiVersion: streams.ibm.com/v1"> $(lower_app_name).yaml
 	@echo "kind: Job" >> $(lower_app_name).yaml
 	@echo "metadata:" >> $(lower_app_name).yaml

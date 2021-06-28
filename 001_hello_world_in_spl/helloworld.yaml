@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: helloworld
+spec:
+   bundle:
+      name: sample.HelloWorld.sab
+      file:
+         path: "./build/helloworld/sample.HelloWorld.sab"

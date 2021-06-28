@@ -18,6 +18,7 @@ DOCKER_NAMESPACE ?= $(USER)
 DOCKER_REGISTRY ?= localhost:5000
 
 APP_NAME ?= HelloWorld
+NAMESPACE?= sample
 
 lower_app_name=`echo $(APP_NAME) | tr A-Z a-z`
 
@@ -35,7 +36,7 @@ clean:
 
 ifeq ($(DOCKER),)
 
-app : sample/$(APP_NAME).spl
+app : $(NAMESPACE)/$(APP_NAME).spl
 	@docker run -it --rm \
 		-v $(PWD):$(PWD):rw \
 		-v $(HOME)/.m2:/home/builder/.m2:rw \
@@ -46,12 +47,20 @@ app : sample/$(APP_NAME).spl
 
 else
 
-app : sample/$(APP_NAME).spl
+app : $(NAMESPACE)/$(APP_NAME).spl
 	@$(STREAMS_INSTALL)/bin/sc \
 		$(SPLC_FLAGS) \
 		--output-dir=build/$(lower_app_name)  \
 		-M sample::$(APP_NAME) \
 		$(SPL_CMD_ARGS)
-
+	@echo "apiVersion: streams.ibm.com/v1"> $(lower_app_name).yaml
+	@echo "kind: Job" >> $(lower_app_name).yaml
+	@echo "metadata:" >> $(lower_app_name).yaml
+	@echo "   name: $(lower_app_name)" >> $(lower_app_name).yaml
+	@echo "spec:" >> $(lower_app_name).yaml
+	@echo  "   bundle:" >> $(lower_app_name).yaml
+	@echo  "      name: $(NAMESPACE).$(APP_NAME).sab" >> $(lower_app_name).yaml
+	@echo  "      file:" >> $(lower_app_name).yaml
+	@echo  "         path: \"./build/$(lower_app_name)/$(NAMESPACE).$(APP_NAME).sab\"" >> $(lower_app_name).yaml
 
 endif

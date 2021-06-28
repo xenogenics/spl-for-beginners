@@ -6,5 +6,5 @@ spec:
   bundle:
     name: sample.HelloWorld.sab
     file:
-       path: "./build/helloworld/sample.HelloWorld.sab"
+       path: "/Users/jchailloux/Documents/OpenStreams/workspace/SPL/spl-for-beginners/001_hello_world_in_spl/build/helloworld/sample.HelloWorld.sab"
   

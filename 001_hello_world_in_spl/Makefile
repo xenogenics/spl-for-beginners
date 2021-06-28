@@ -55,7 +55,7 @@ app : $(NAMESPACE)/$(APP_NAME).spl
 		$(SPL_CMD_ARGS)
 	@echo ""
 	@echo "Generating :  $(lower_app_name).yaml"
-	@echo "To submit application : kubectl -apply -f $(lower_app_name).yaml"
+	@echo "To submit application : kubectl apply -f $(lower_app_name).yaml"
 	@echo ""
 
 	@echo "apiVersion: streams.ibm.com/v1"> $(lower_app_name).yaml

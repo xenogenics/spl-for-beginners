@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<toolkitModel xmlns="http://www.ibm.com/xmlns/prod/streams/spl/toolkit" productVersion="6.0.0.0" xmlns:common="http://www.ibm.com/xmlns/prod/streams/spl/common" xmlns:ti="http://www.ibm.com/xmlns/prod/streams/spl/toolkitInfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <toolkit name="048_source_operator_with_control_port" requiredProductVersion="4.0.0.0" version="1.0.1">
+    <description/>
+    <uriTable>
+      <uri index="1" value="source_op_with_control_port/source_operator_with_control_port.spl"/>
+      <uri index="2" value="source_op_with_control_port/MyOp"/>
+    </uriTable>
+    <namespace name="source_op_with_control_port">
+      <primitiveOp language="Cpp" modelUriIndex="2" name="MyOp" public="true">
+        <parametersDescription/>
+        <parameter cardinality="-1" expressionMode="Expression" name="favoriteMovies" optional="false" type="rstring">
+          <description/>
+        </parameter>
+        <inputPort minNumPorts="0" optional="true" windowPunctInputMode="Oblivious">
+          <description/>
+          <windowPolicy>NonWindowed</windowPolicy>
+        </inputPort>
+        <outputPort expressionMode="Nonexistent" minNumPorts="0" optional="true" windowPunctOutputMode="Generating">
+          <description/>
+        </outputPort>
+      </primitiveOp>
+      <compositeOp column="11" line="11" name="source_operator_with_control_port" potentialMain="true" uriIndex="1"/>
+    </namespace>
+    <sabFiles>
+      <ti:include path="toolkit.xml" root="toolkitDir"/>
+      <ti:include path="impl/java/lib/**" root="toolkitDir"/>
+      <ti:include path="impl/java/bin/**" root="toolkitDir"/>
+      <ti:include path="impl/bin/**" root="toolkitDir"/>
+      <ti:include path="impl/lib/**" root="toolkitDir"/>
+      <ti:include path="impl/nl/*.dat" root="toolkitDir"/>
+      <ti:include path="etc/**" root="toolkitDir"/>
+      <ti:include path="lib/**" root="toolkitDir"/>
+      <ti:include path="nl/**" root="toolkitDir"/>
+      <ti:include path="opt/**" root="toolkitDir"/>
+    </sabFiles>
+  </toolkit>
+</toolkitModel>

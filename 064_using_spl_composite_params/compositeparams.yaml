@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: compositeparams
+spec:
+   bundle:
+      name: com.acme.test.CompositeParams.sab
+      file:
+         path: "./build/compositeparams/com.acme.test.CompositeParams.sab"

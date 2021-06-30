@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: udp1
+spec:
+   bundle:
+      name: com.acme.test.UDP1.sab
+      file:
+         path: "./build/udp1/com.acme.test.UDP1.sab"

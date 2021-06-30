@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: udp7
+spec:
+   bundle:
+      name: com.acme.test.UDP7.sab
+      file:
+         path: "./build/udp7/com.acme.test.UDP7.sab"

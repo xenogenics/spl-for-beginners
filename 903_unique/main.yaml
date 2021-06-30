@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: main
+spec:
+   bundle:
+      name: sample.Main.sab
+      file:
+         path: "./build/main/sample.Main.sab"

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<toolkitModel xmlns="http://www.ibm.com/xmlns/prod/streams/spl/toolkit" productVersion="6.0.0.0" xmlns:common="http://www.ibm.com/xmlns/prod/streams/spl/common" xmlns:ti="http://www.ibm.com/xmlns/prod/streams/spl/toolkitInfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <toolkit name="049_json_to_tuple_to_json_using_java" requiredProductVersion="4.0.0.0" version="1.0.1">
+    <description>049_json_to_tuple_to_json_using_java</description>
+    <uriTable>
+      <uri index="2" value="com.ibm.streamsx.json/JSONToTuple"/>
+      <uri index="1" value="sample/Main.spl"/>
+      <uri index="3" value="com.ibm.streamsx.json/TupleToJSON"/>
+    </uriTable>
+    <namespace name="sample">
+      <compositeOp column="11" line="73" name="Main" potentialMain="true" uriIndex="1">
+        <type column="5" line="76" name="MyJsonType" type="rstring jsonData" uriIndex="1"/>
+        <type column="5" line="78" name="MyAddressType" type="rstring country" uriIndex="1"/>
+        <type column="5" line="79" name="MyProfileType" type="rstring name, uint64 age, MyAddressType address" uriIndex="1"/>
+        <type column="5" line="81" name="addressType" type="rstring state, rstring street, rstring city, rstring zipCode" uriIndex="1"/>
+        <type column="5" line="82" name="contactType" type="addressType address, rstring name, rstring phone" uriIndex="1"/>
+        <type column="5" line="83" name="contactsType" type="contactType contact" uriIndex="1"/>
+        <type column="5" line="84" name="MyContactsType" type="contactsType contacts" uriIndex="1"/>
+        <type column="5" line="86" name="authorType" type="rstring first, rstring last" uriIndex="1"/>
+        <type column="5" line="87" name="bookType" type="rstring title, authorType author, rstring publisher" uriIndex="1"/>
+        <type column="5" line="88" name="booksType" type="list&lt;bookType> book" uriIndex="1"/>
+        <type column="5" line="89" name="MyBooksType" type="booksType books" uriIndex="1"/>
+        <type column="4" line="90" name="FormulaInfo_t" type="rstring formula, int32 formulaId" uriIndex="1"/>
+        <type column="2" line="91" name="RicInfo_t" type="rstring ric, rstring field, rstring interval, int32 intervalMultiplier" uriIndex="1"/>
+        <type column="2" line="92" name="ClientInfo_t" type="rstring uuid, rstring trackingId" uriIndex="1"/>
+        <type column="2" line="93" name="CalcResult_t" type="list&lt;int64> result" uriIndex="1"/>
+        <type column="2" line="94" name="HistoricalCalcResponse_t" type="ClientInfo_t clientInfo, RicInfo_t ricInfo, FormulaInfo_t formulaInfo, CalcResult_t calcResult" uriIndex="1"/>
+        <type column="2" line="96" name="Topic_t" type="rstring name, int32 id" uriIndex="1"/>
+        <type column="2" line="97" name="SubscriptionError_t" type="ClientInfo_t clientInfo, Topic_t topic, rstring errorDescription" uriIndex="1"/>
+      </compositeOp>
+    </namespace>
+    <namespace name="com.ibm.streamsx.json">
+      <primitiveOp language="Java" modelUriIndex="2" name="JSONToTuple" public="true">
+        <description>This operator converts JSON strings into SPL Tuples. The tuple structure is expected to match the JSON schema. A subset of the attributes can be specified as well.  Only those attributes that are present in the Tuple schema and JSON input will be converted. All other attributes will be ignored. If an invalid JSON string is found in the input, the operator will fail.  This behavior can be overridden by specifying the optional output port or by specifying the "ignoreParsingError" parameter. Atributes from the input stream that match those in the output stream will be automaticall copied over.  However, if they also exist in the JSON input, their assigned value will be of that specified in the JSON. Null values in JSON arrays are ignored. Null values for all other attributes will result in default initializled output attributes.  Limitations: BLOB, MAP and COMPLEX attribute types are not supported in the output tuple schema at this time and will be ignored.</description>
+        <parameter expressionMode="Constant" name="vmArg" optional="true" type="rstring">
+          <description>
+Specifies command-line arguments that are passed to the Java virtual machine that the operator runs within.
+</description>
+        </parameter>
+        <parameter cardinality="1" expressionMode="AttributeFree" name="ignoreParsingError" optional="true" type="boolean">
+          <description>Ignore any JSON parsing errors.If the optional output port is enabled, then this parameter is ignored. JSON that cannot be parsed is sent on the optional output port. Default is false where the operator will fail if the JSON cannot be parsed.</description>
+        </parameter>
+        <parameter cardinality="1" expressionMode="AttributeFree" name="jsonStringAttribute" optional="true" type="rstring">
+          <description>Name of the input stream attribute which contains the JSON string. This attribute must be of USTRING or RSTRING type. Default is jsonString</description>
+        </parameter>
+        <parameter cardinality="1" expressionMode="AttributeFree" name="jsonStringOutputAttribute" optional="true" type="rstring">
+          <description>Name of the output stream attribute which should be populated with the incoming JSON string. This attribute must be of USTRING or RSTRING type. Default is to ignore.</description>
+        </parameter>
+        <parameter cardinality="1" expressionMode="AttributeFree" name="targetAttribute" optional="true" type="rstring">
+          <description>Name of the output stream attribute which should be considered as the root of the JSON tuple to be populated. Note that this can only point to a tuple type or collection type attributes (list, set etc). If it points to a list, set etc type attribute, the input JSON is expected to be an array. Default is the output tuple root.</description>
+        </parameter>
+        <inputPort maxNumPorts="1" minNumPorts="1" optional="false" windowPunctInputMode="Oblivious">
+          <description/>
+          <windowPolicy>NonWindowed</windowPolicy>
+        </inputPort>
+        <outputPort expressionMode="Nonexistent" maxNumPorts="1" minNumPorts="1" optional="false" windowPunctOutputMode="Free">
+          <description/>
+        </outputPort>
+        <outputPort expressionMode="Nonexistent" maxNumPorts="1" minNumPorts="1" optional="true" windowPunctOutputMode="Free">
+          <description/>
+        </outputPort>
+      </primitiveOp>
+      <primitiveOp language="Java" modelUriIndex="3" name="TupleToJSON" public="true">
+        <description>This operator converts incoming tuples to JSON String. Note that any matching attributes from the input stream will be copied over to the output. If an attribute, with the same name as the JSON string output attribute exists in the input stream, it will be overwritten by the JSON String that is generated.</description>
+        <parameter expressionMode="Constant" name="vmArg" optional="true" type="rstring">
+          <description>
+Specifies command-line arguments that are passed to the Java virtual machine that the operator runs within.
+</description>
+        </parameter>
+        <parameter cardinality="1" expressionMode="AttributeFree" name="jsonStringAttribute" optional="true" type="rstring">
+          <description>Name of the output stream attribute where the JSON string will be populated. Default is jsonString</description>
+        </parameter>
+        <parameter cardinality="1" expressionMode="AttributeFree" name="rootAttribute" optional="true" type="rstring">
+          <description>Name of the input stream attribute to be used as the root of the JSON object. Default is the input tuple.</description>
+        </parameter>
+        <inputPort maxNumPorts="1" minNumPorts="1" optional="false" windowPunctInputMode="Oblivious">
+          <description/>
+          <windowPolicy>NonWindowed</windowPolicy>
+        </inputPort>
+        <outputPort expressionMode="Nonexistent" maxNumPorts="1" minNumPorts="1" optional="false" windowPunctOutputMode="Free">
+          <description/>
+        </outputPort>
+      </primitiveOp>
+    </namespace>
+    <sabFiles>
+      <ti:include path="toolkit.xml" root="toolkitDir"/>
+      <ti:include path="impl/java/lib/**" root="toolkitDir"/>
+      <ti:include path="impl/java/bin/**" root="toolkitDir"/>
+      <ti:include path="impl/bin/**" root="toolkitDir"/>
+      <ti:include path="impl/lib/**" root="toolkitDir"/>
+      <ti:include path="impl/nl/*.dat" root="toolkitDir"/>
+      <ti:include path="etc/**" root="toolkitDir"/>
+      <ti:include path="lib/**" root="toolkitDir"/>
+      <ti:include path="nl/**" root="toolkitDir"/>
+      <ti:include path="opt/**" root="toolkitDir"/>
+    </sabFiles>
+  </toolkit>
+</toolkitModel>

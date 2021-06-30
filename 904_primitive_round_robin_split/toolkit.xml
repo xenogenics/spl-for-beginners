@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<toolkitModel xmlns="http://www.ibm.com/xmlns/prod/streams/spl/toolkit" productVersion="6.0.0.0" xmlns:common="http://www.ibm.com/xmlns/prod/streams/spl/common" xmlns:ti="http://www.ibm.com/xmlns/prod/streams/spl/toolkitInfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <toolkit name="904_primitive_round_robin_split" requiredProductVersion="4.0.0.0" version="1.0.1">
+    <description>This is an example for creating a primitive operator</description>
+    <uriTable>
+      <uri index="1" value="sample/Main.spl"/>
+      <uri index="2" value="my.util/RoundRobinSplit"/>
+    </uriTable>
+    <namespace name="sample">
+      <compositeOp column="11" line="8" name="Main" potentialMain="true" uriIndex="1"/>
+    </namespace>
+    <namespace name="my.util">
+      <primitiveOp language="Cpp" modelUriIndex="2" name="RoundRobinSplit" public="true">
+        <inputPort minNumPorts="0" optional="true" windowPunctInputMode="Oblivious">
+          <windowPolicy>NonWindowed</windowPolicy>
+        </inputPort>
+        <outputPort expressionMode="Nonexistent" minNumPorts="0" optional="true" windowPunctOutputMode="Generating"/>
+      </primitiveOp>
+    </namespace>
+    <sabFiles>
+      <ti:include path="toolkit.xml" root="toolkitDir"/>
+      <ti:include path="impl/java/lib/**" root="toolkitDir"/>
+      <ti:include path="impl/java/bin/**" root="toolkitDir"/>
+      <ti:include path="impl/bin/**" root="toolkitDir"/>
+      <ti:include path="impl/lib/**" root="toolkitDir"/>
+      <ti:include path="impl/nl/*.dat" root="toolkitDir"/>
+      <ti:include path="etc/**" root="toolkitDir"/>
+      <ti:include path="lib/**" root="toolkitDir"/>
+      <ti:include path="nl/**" root="toolkitDir"/>
+      <ti:include path="opt/**" root="toolkitDir"/>
+    </sabFiles>
+  </toolkit>
+</toolkitModel>

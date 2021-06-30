@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<toolkitModel xmlns="http://www.ibm.com/xmlns/prod/streams/spl/toolkit" productVersion="6.0.0.0" xmlns:common="http://www.ibm.com/xmlns/prod/streams/spl/common" xmlns:ti="http://www.ibm.com/xmlns/prod/streams/spl/toolkitInfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <toolkit name="Test1" requiredProductVersion="4.0.0.0" version="1.0.1">
+    <description/>
+    <uriTable>
+      <uri index="1" value="com.acme.test/Test1.spl"/>
+    </uriTable>
+    <namespace name="com.acme.test">
+      <compositeOp column="11" line="13" name="Test1" potentialMain="true" uriIndex="1">
+        <type column="3" line="15" name="PreposData" type="tuple&lt;PreposInitData initdata, PreposRunData rundata, boolean run, DummyTypeStream dummytypestream>" uriIndex="1"/>
+        <type column="3" line="22" name="PreposInitData" type="tuple&lt;rstring sInitDataFile>" uriIndex="1"/>
+        <type column="3" line="26" name="DummyTypeStream" type="tuple&lt;CrewShift tCrewShift, CrewShiftPr tCrewShiftPr, DamagePredSimpl tDamagePredSimpl, DamagePred tDamagePred>" uriIndex="1"/>
+        <type column="3" line="33" name="PreposRunData" type="tuple&lt;uint32 iHorizon, float64 fCriticalRestrPt, uint32 iMaxPrimCasesPerCct, uint32 iEscalationLevel, uint64 iStartTimeOffset, map&lt;rstring, map&lt;rstring, list&lt;CrewShift>>> ltCrewShiftsRegional, map&lt;rstring, map&lt;rstring, list&lt;CrewShift>>> ltCrewShiftsContract, map&lt;rstring, map&lt;rstring, list&lt;CrewShift>>> ltCrewShiftsForeign, map&lt;rstring, map&lt;rstring, list&lt;CrewShiftPr>>> ltCrewShiftsPrRegional, map&lt;rstring, map&lt;rstring, list&lt;CrewShiftPr>>> ltCrewShiftsPrContract, map&lt;rstring, map&lt;rstring, list&lt;CrewShiftPr>>> ltCrewShiftsPrForeign, map&lt;rstring, list&lt;DamagePredSimpl>> ltDamagesSimpl, map&lt;rstring, list&lt;DamagePred>> ltDamages>" uriIndex="1"/>
+        <type column="3" line="49" name="CrewShift" type="tuple&lt;uint64 iStart, uint64 iEnd, uint32 iNCrew>" uriIndex="1"/>
+        <type column="3" line="55" name="CrewShiftPr" type="tuple&lt;CrewShift tCrewShift, uint32 iPeriodicity, uint32 iNReps>" uriIndex="1"/>
+        <type column="3" line="61" name="DamagePredSimpl" type="tuple&lt;uint64 iStart, uint64 iEnd, map&lt;rstring, uint32> iNDamages>" uriIndex="1"/>
+        <type column="3" line="67" name="DamagePred" type="tuple&lt;uint64 iStart, uint64 iEnd, map&lt;rstring, list&lt;uint32>> iNCustomers, map&lt;rstring, list&lt;uint32>> iUrgency>" uriIndex="1"/>
+      </compositeOp>
+    </namespace>
+    <sabFiles>
+      <ti:include path="toolkit.xml" root="toolkitDir"/>
+      <ti:include path="impl/java/lib/**" root="toolkitDir"/>
+      <ti:include path="impl/java/bin/**" root="toolkitDir"/>
+      <ti:include path="impl/bin/**" root="toolkitDir"/>
+      <ti:include path="impl/lib/**" root="toolkitDir"/>
+      <ti:include path="impl/nl/*.dat" root="toolkitDir"/>
+      <ti:include path="etc/**" root="toolkitDir"/>
+      <ti:include path="lib/**" root="toolkitDir"/>
+      <ti:include path="nl/**" root="toolkitDir"/>
+      <ti:include path="opt/**" root="toolkitDir"/>
+    </sabFiles>
+  </toolkit>
+</toolkitModel>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<toolkitModel xmlns="http://www.ibm.com/xmlns/prod/streams/spl/toolkit" productVersion="6.0.0.0" xmlns:common="http://www.ibm.com/xmlns/prod/streams/spl/common" xmlns:ti="http://www.ibm.com/xmlns/prod/streams/spl/toolkitInfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <toolkit name="045_file_source_using_spl_custom_operator" requiredProductVersion="4.0.0.0" version="1.0.1">
+    <description/>
+    <uriTable>
+      <uri index="1" value="my.file.source/file_source_using_spl_custom_operator.spl"/>
+    </uriTable>
+    <namespace name="my.file.source">
+      <compositeOp column="11" line="13" name="file_source_using_spl_custom_operator" potentialMain="true" uriIndex="1">
+        <parameter defaultValue="getSubmissionTimeValue(&quot;SourceFileName&quot;)" metaType="Expression" name="sourceFileName" optional="true" type="&lt;rstring>"/>
+        <type column="3" line="24" name="StockReportSchema" type="tuple&lt;rstring symbol, rstring dateTime, float64 closingPrice, uint32 volume>" uriIndex="1"/>
+      </compositeOp>
+    </namespace>
+    <sabFiles>
+      <ti:include path="toolkit.xml" root="toolkitDir"/>
+      <ti:include path="impl/java/lib/**" root="toolkitDir"/>
+      <ti:include path="impl/java/bin/**" root="toolkitDir"/>
+      <ti:include path="impl/bin/**" root="toolkitDir"/>
+      <ti:include path="impl/lib/**" root="toolkitDir"/>
+      <ti:include path="impl/nl/*.dat" root="toolkitDir"/>
+      <ti:include path="etc/**" root="toolkitDir"/>
+      <ti:include path="lib/**" root="toolkitDir"/>
+      <ti:include path="nl/**" root="toolkitDir"/>
+      <ti:include path="opt/**" root="toolkitDir"/>
+    </sabFiles>
+  </toolkit>
+</toolkitModel>

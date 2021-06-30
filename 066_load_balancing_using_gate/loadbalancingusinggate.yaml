@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: loadbalancingusinggate
+spec:
+   bundle:
+      name: com.acme.test.LoadBalancingUsingGate.sab
+      file:
+         path: "./build/loadbalancingusinggate/com.acme.test.LoadBalancingUsingGate.sab"

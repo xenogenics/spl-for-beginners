@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<toolkitModel xmlns="http://www.ibm.com/xmlns/prod/streams/spl/toolkit" productVersion="6.0.0.0" xmlns:common="http://www.ibm.com/xmlns/prod/streams/spl/common" xmlns:ti="http://www.ibm.com/xmlns/prod/streams/spl/toolkitInfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <toolkit name="055_json_to_tuple_to_json_using_c++" requiredProductVersion="4.0.0.0" version="1.0.1">
+    <description/>
+    <uriTable>
+      <uri index="1" value="com.acme.test/json_to_tuple_to_json_using_cpp.spl"/>
+      <uri index="2" value="com.acme.test/native.function/function.xml"/>
+    </uriTable>
+    <namespace name="com.acme.test">
+      <compositeOp column="11" line="69" name="json_to_tuple_to_json_using_cpp" potentialMain="true" uriIndex="1">
+        <type column="3" line="72" name="PersonData" type="tuple&lt;rstring firstName, rstring lastName, rstring ssn, rstring streetAddress, uint32 age, float32 height, boolean isEmployed, list&lt;rstring> favoriteMovies>" uriIndex="1"/>
+        <type column="3" line="77" name="ResultData" type="tuple&lt;rstring jsonString>, tuple&lt;PersonData>" uriIndex="1"/>
+      </compositeOp>
+      <function modelUriIndex="2" name="convertTupleAttributesToJson" native="true" public="true" returnType="boolean" uriIndex="0">
+        <description>Convert the tuple attributes to JSON</description>
+        <prototype>public boolean convertTupleAttributesToJson(mutable rstring jsonString, rstring firstName, rstring lastName, rstring ssn, rstring streetAddress, uint32 age, float32 height, boolean isEmployed, list&lt;rstring&gt; favoriteMovies)</prototype>
+        <parameter mutable="true" name="jsonString" type="rstring"/>
+        <parameter name="firstName" type="rstring"/>
+        <parameter name="lastName" type="rstring"/>
+        <parameter name="ssn" type="rstring"/>
+        <parameter name="streetAddress" type="rstring"/>
+        <parameter name="age" type="uint32"/>
+        <parameter name="height" type="float32"/>
+        <parameter name="isEmployed" type="boolean"/>
+        <parameter name="favoriteMovies" type="list&lt;rstring>"/>
+      </function>
+      <function modelUriIndex="2" name="convertJsonToTupleAttributes" native="true" public="true" returnType="boolean" uriIndex="0">
+        <description>Convert a JSON string to tuple attribute values.</description>
+        <prototype>public boolean convertJsonToTupleAttributes(rstring jsonString, mutable rstring firstName, mutable rstring lastName, mutable rstring ssn, mutable rstring streetAddress, mutable uint32 age, mutable float32 height, mutable boolean isEmployed, mutable list&lt;rstring&gt; favoriteMovies)</prototype>
+        <parameter name="jsonString" type="rstring"/>
+        <parameter mutable="true" name="firstName" type="rstring"/>
+        <parameter mutable="true" name="lastName" type="rstring"/>
+        <parameter mutable="true" name="ssn" type="rstring"/>
+        <parameter mutable="true" name="streetAddress" type="rstring"/>
+        <parameter mutable="true" name="age" type="uint32"/>
+        <parameter mutable="true" name="height" type="float32"/>
+        <parameter mutable="true" name="isEmployed" type="boolean"/>
+        <parameter mutable="true" name="favoriteMovies" type="list&lt;rstring>"/>
+      </function>
+    </namespace>
+    <sabFiles>
+      <ti:include path="toolkit.xml" root="toolkitDir"/>
+      <ti:include path="impl/java/lib/**" root="toolkitDir"/>
+      <ti:include path="impl/java/bin/**" root="toolkitDir"/>
+      <ti:include path="impl/bin/**" root="toolkitDir"/>
+      <ti:include path="impl/lib/**" root="toolkitDir"/>
+      <ti:include path="impl/nl/*.dat" root="toolkitDir"/>
+      <ti:include path="etc/**" root="toolkitDir"/>
+      <ti:include path="lib/**" root="toolkitDir"/>
+      <ti:include path="nl/**" root="toolkitDir"/>
+      <ti:include path="opt/**" root="toolkitDir"/>
+    </sabFiles>
+  </toolkit>
+</toolkitModel>

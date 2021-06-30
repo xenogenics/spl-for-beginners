@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: launching_external_apps
+spec:
+   bundle:
+      name: launch.external.apps.launching_external_apps.sab
+      file:
+         path: "./build/launching_external_apps/launch.external.apps.launching_external_apps.sab"

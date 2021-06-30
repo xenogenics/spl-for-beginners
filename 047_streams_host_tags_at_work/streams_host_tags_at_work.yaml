@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: streams_host_tags_at_work
+spec:
+   bundle:
+      name: host.tags.streams_host_tags_at_work.sab
+      file:
+         path: "./build/streams_host_tags_at_work/host.tags.streams_host_tags_at_work.sab"

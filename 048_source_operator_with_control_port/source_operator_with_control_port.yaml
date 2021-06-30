@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: source_operator_with_control_port
+spec:
+   bundle:
+      name: source_op_with_control_port.source_operator_with_control_port.sab
+      file:
+         path: "./build/source_operator_with_control_port/source_op_with_control_port.source_operator_with_control_port.sab"

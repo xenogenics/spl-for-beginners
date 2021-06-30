@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<toolkitModel xmlns="http://www.ibm.com/xmlns/prod/streams/spl/toolkit" productVersion="6.0.0.0" xmlns:common="http://www.ibm.com/xmlns/prod/streams/spl/common" xmlns:ti="http://www.ibm.com/xmlns/prod/streams/spl/toolkitInfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <toolkit name="054_serialize_deserialize_tuples" requiredProductVersion="4.0.0.0" version="1.0.1">
+    <description/>
+    <uriTable>
+      <uri index="2" value="com.acme.test/native.function/function.xml"/>
+      <uri index="1" value="com.acme.test/serialize_deserialize_tuples.spl"/>
+    </uriTable>
+    <namespace name="com.acme.test">
+      <compositeOp column="11" line="19" name="serialize_deserialize_tuples" potentialMain="true" uriIndex="1">
+        <type column="3" line="22" name="PersonData" type="tuple&lt;rstring firstName, rstring lastName, rstring ssn, rstring streetAddress, uint32 age, float32 height, boolean isEmployed>" uriIndex="1"/>
+      </compositeOp>
+      <function modelUriIndex="2" name="serializeTuple" native="true" public="true" returnType="void" uriIndex="0">
+        <description>Serialize a given tuple to a blob</description>
+        <prototype>&lt;tuple T&gt; public void serializeTuple(T myTuple, mutable blob myBlob)</prototype>
+        <parameter name="myTuple" type="T"/>
+        <parameter mutable="true" name="myBlob" type="blob"/>
+      </function>
+      <function modelUriIndex="2" name="deserializeTuple" native="true" public="true" returnType="void" uriIndex="0">
+        <description>Deserialize the blob into a tuple</description>
+        <prototype>&lt;tuple T&gt; public void deserializeTuple(mutable T myTuple, blob myBlob)</prototype>
+        <parameter mutable="true" name="myTuple" type="T"/>
+        <parameter name="myBlob" type="blob"/>
+      </function>
+    </namespace>
+    <sabFiles>
+      <ti:include path="toolkit.xml" root="toolkitDir"/>
+      <ti:include path="impl/java/lib/**" root="toolkitDir"/>
+      <ti:include path="impl/java/bin/**" root="toolkitDir"/>
+      <ti:include path="impl/bin/**" root="toolkitDir"/>
+      <ti:include path="impl/lib/**" root="toolkitDir"/>
+      <ti:include path="impl/nl/*.dat" root="toolkitDir"/>
+      <ti:include path="etc/**" root="toolkitDir"/>
+      <ti:include path="lib/**" root="toolkitDir"/>
+      <ti:include path="nl/**" root="toolkitDir"/>
+      <ti:include path="opt/**" root="toolkitDir"/>
+    </sabFiles>
+  </toolkit>
+</toolkitModel>

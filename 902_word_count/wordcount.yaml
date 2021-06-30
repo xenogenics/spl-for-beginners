@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: wordcount
+spec:
+   bundle:
+      name: word.WordCount.sab
+      file:
+         path: "./build/wordcount/word.WordCount.sab"

@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: numberedcat
+spec:
+   bundle:
+      name: sample.NumberedCat.sab
+      file:
+         path: "./build/numberedcat/sample.NumberedCat.sab"

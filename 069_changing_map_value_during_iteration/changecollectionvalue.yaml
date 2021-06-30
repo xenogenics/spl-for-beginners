@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: changecollectionvalue
+spec:
+   bundle:
+      name: com.acme.test.ChangeCollectionValue.sab
+      file:
+         path: "./build/changecollectionvalue/com.acme.test.ChangeCollectionValue.sab"

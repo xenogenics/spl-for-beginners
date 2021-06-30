@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: serialize_deserialize_tuples
+spec:
+   bundle:
+      name: com.acme.test.serialize_deserialize_tuples.sab
+      file:
+         path: "./build/serialize_deserialize_tuples/com.acme.test.serialize_deserialize_tuples.sab"

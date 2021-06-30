@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<toolkitModel xmlns="http://www.ibm.com/xmlns/prod/streams/spl/toolkit" productVersion="6.0.0.0" xmlns:common="http://www.ibm.com/xmlns/prod/streams/spl/common" xmlns:ti="http://www.ibm.com/xmlns/prod/streams/spl/toolkitInfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <toolkit name="090_consistent_region_spl_01" requiredProductVersion="4.0.0.0" version="1.0.1">
+    <description/>
+    <uriTable>
+      <uri index="1" value="com.acme.test/ConsistentRegion1.spl"/>
+    </uriTable>
+    <namespace name="com.acme.test">
+      <compositeOp column="11" line="68" name="ConsistentRegion1" potentialMain="true" uriIndex="1"/>
+      <compositeOp column="11" line="170" name="CrashAtTuple" potentialMain="false" uriIndex="1">
+        <parameter metaType="Expression" name="tupleNumber" optional="false" type="&lt;uint32>"/>
+        <inputPort name="I" portIndex="0"/>
+        <outputPort name="O" portIndex="0"/>
+      </compositeOp>
+      <function column="1" line="56" name="sortMap" native="false" returnType="void" uriIndex="1">
+        <prototype>void sortMap(map&lt;rstring, uint32&gt; inMap, mutable list&lt;WordCountTuple&gt; orderedList)</prototype>
+        <parameter name="inMap" type="map&lt;rstring, uint32>"/>
+        <parameter mutable="true" name="orderedList" type="list&lt;WordCountTuple>"/>
+      </function>
+      <type column="3" line="53" name="WordCountTuple" static="true" type="tuple&lt;rstring word, uint32 count>" uriIndex="1"/>
+    </namespace>
+    <sabFiles>
+      <ti:include path="toolkit.xml" root="toolkitDir"/>
+      <ti:include path="impl/java/lib/**" root="toolkitDir"/>
+      <ti:include path="impl/java/bin/**" root="toolkitDir"/>
+      <ti:include path="impl/bin/**" root="toolkitDir"/>
+      <ti:include path="impl/lib/**" root="toolkitDir"/>
+      <ti:include path="impl/nl/*.dat" root="toolkitDir"/>
+      <ti:include path="etc/**" root="toolkitDir"/>
+      <ti:include path="lib/**" root="toolkitDir"/>
+      <ti:include path="nl/**" root="toolkitDir"/>
+      <ti:include path="opt/**" root="toolkitDir"/>
+    </sabFiles>
+  </toolkit>
+</toolkitModel>

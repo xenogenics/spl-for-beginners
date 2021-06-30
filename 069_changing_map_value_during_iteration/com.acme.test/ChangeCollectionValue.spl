@@ -10,7 +10,7 @@ Primary reason for having this example here is to make the developers aware of t
 */
 namespace com.acme.test;
 
-composite ChangeMapValue {
+composite ChangeCollectionValue {
 	graph
 		stream<int8 x> TestData1 = Beacon() {
 			param

@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: usingstreamsrestapis
+spec:
+   bundle:
+      name: com.acme.test.UsingStreamsRestApis.sab
+      file:
+         path: "./build/usingstreamsrestapis/com.acme.test.UsingStreamsRestApis.sab"

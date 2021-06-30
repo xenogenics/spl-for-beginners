@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: viewannotationatwork
+spec:
+   bundle:
+      name: com.acme.test.ViewAnnotationAtWork.sab
+      file:
+         path: "./build/viewannotationatwork/com.acme.test.ViewAnnotationAtWork.sab"

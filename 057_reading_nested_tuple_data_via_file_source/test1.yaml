@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: test1
+spec:
+   bundle:
+      name: com.acme.test.Test1.sab
+      file:
+         path: "./build/test1/com.acme.test.Test1.sab"

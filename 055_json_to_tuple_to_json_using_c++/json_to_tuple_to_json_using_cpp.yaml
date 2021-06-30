@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: json_to_tuple_to_json_using_cpp
+spec:
+   bundle:
+      name: com.acme.test.json_to_tuple_to_json_using_cpp.sab
+      file:
+         path: "./build/json_to_tuple_to_json_using_cpp/com.acme.test.json_to_tuple_to_json_using_cpp.sab"

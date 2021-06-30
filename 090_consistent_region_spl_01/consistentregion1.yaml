@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: consistentregion1
+spec:
+   bundle:
+      name: com.acme.test.ConsistentRegion1.sab
+      file:
+         path: "./build/consistentregion1/com.acme.test.ConsistentRegion1.sab"

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<toolkitModel xmlns="http://www.ibm.com/xmlns/prod/streams/spl/toolkit" productVersion="6.0.0.0" xmlns:common="http://www.ibm.com/xmlns/prod/streams/spl/common" xmlns:ti="http://www.ibm.com/xmlns/prod/streams/spl/toolkitInfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <toolkit name="CompositeParams" requiredProductVersion="4.0.0.0" version="1.0.1">
+    <description/>
+    <uriTable>
+      <uri index="1" value="com.acme.test/CompositeParams.spl"/>
+    </uriTable>
+    <namespace name="com.acme.test">
+      <compositeOp column="11" line="31" name="CompositeParams" potentialMain="true" uriIndex="1"/>
+      <compositeOp column="11" line="100" name="AttributeParamMode" potentialMain="false" uriIndex="1">
+        <parameter metaType="Attribute" name="inputAttribute" optional="false"/>
+        <inputPort name="In0" portIndex="0"/>
+        <outputPort name="Out0" portIndex="0"/>
+      </compositeOp>
+      <compositeOp column="11" line="112" name="ExpressionParamMode" potentialMain="false" uriIndex="1">
+        <parameter metaType="Expression" name="inputExpression" optional="false"/>
+        <inputPort name="In0" portIndex="0"/>
+        <outputPort name="Out0" portIndex="0"/>
+      </compositeOp>
+      <compositeOp column="11" line="124" name="FunctionParamMode" potentialMain="false" uriIndex="1">
+        <parameter metaType="Function" name="addFunction" optional="false"/>
+        <parameter metaType="Function" name="multiplyFunction" optional="false"/>
+        <parameter metaType="Expression" name="inputExpression" optional="false"/>
+        <inputPort name="In0" portIndex="0"/>
+        <outputPort name="Out0" portIndex="0"/>
+      </compositeOp>
+      <compositeOp column="11" line="138" name="OperatorParamMode" potentialMain="false" uriIndex="1">
+        <parameter metaType="Operator" name="op" optional="false"/>
+        <inputPort name="In0" portIndex="0"/>
+        <outputPort name="Out0" portIndex="0"/>
+      </compositeOp>
+      <compositeOp column="11" line="152" name="TypeParamMode" potentialMain="false" uriIndex="1">
+        <parameter metaType="Type" name="paramType" optional="false"/>
+        <inputPort name="In0" portIndex="0"/>
+        <outputPort name="Out0" portIndex="0"/>
+      </compositeOp>
+      <function column="1" line="22" name="adder" native="false" returnType="int32" uriIndex="1">
+        <prototype>int32 adder(int32 value)</prototype>
+        <parameter name="value" type="int32"/>
+      </function>
+      <function column="1" line="26" name="multiplier" native="false" returnType="int32" uriIndex="1">
+        <prototype>int32 multiplier(int32 value)</prototype>
+        <parameter name="value" type="int32"/>
+      </function>
+      <type column="6" line="18" name="MyInType" static="true" type="int32 i, int32 j" uriIndex="1"/>
+      <type column="6" line="19" name="MyOutType" static="true" type="int32 y, int32 z" uriIndex="1"/>
+    </namespace>
+    <sabFiles>
+      <ti:include path="toolkit.xml" root="toolkitDir"/>
+      <ti:include path="impl/java/lib/**" root="toolkitDir"/>
+      <ti:include path="impl/java/bin/**" root="toolkitDir"/>
+      <ti:include path="impl/bin/**" root="toolkitDir"/>
+      <ti:include path="impl/lib/**" root="toolkitDir"/>
+      <ti:include path="impl/nl/*.dat" root="toolkitDir"/>
+      <ti:include path="etc/**" root="toolkitDir"/>
+      <ti:include path="lib/**" root="toolkitDir"/>
+      <ti:include path="nl/**" root="toolkitDir"/>
+      <ti:include path="opt/**" root="toolkitDir"/>
+    </sabFiles>
+  </toolkit>
+</toolkitModel>

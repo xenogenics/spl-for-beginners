@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: convertblockdatawithparse
+spec:
+   bundle:
+      name: com.acme.test.ConvertBlockDataWithParse.sab
+      file:
+         path: "./build/convertblockdatawithparse/com.acme.test.ConvertBlockDataWithParse.sab"

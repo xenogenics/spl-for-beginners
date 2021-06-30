@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: file_source_using_spl_custom_operator
+spec:
+   bundle:
+      name: my.file.source.file_source_using_spl_custom_operator.sab
+      file:
+         path: "./build/file_source_using_spl_custom_operator/my.file.source.file_source_using_spl_custom_operator.sab"

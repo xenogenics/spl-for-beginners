@@ -1,0 +1,9 @@
+apiVersion: streams.ibm.com/v1
+kind: Job
+metadata:
+   name: udp8
+spec:
+   bundle:
+      name: com.acme.test.UDP8.sab
+      file:
+         path: "./build/udp8/com.acme.test.UDP8.sab"
